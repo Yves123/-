@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <style>
+            .table-tal{width: 600px;margin: 50px auto}
+            table{margin-top: 20px;}
+            td,th{text-align: center}
+        </style>
+    </head>
+    <body>
+        <div class="table-tal">
+            <div id='navTop'>
+                姓名咯：<input id='oInput' type="text" placeholder="请输入姓名" value="">必填<br />
+                星期一：<input type="text"><br />
+                星期二：<input type="text"><br />
+                星期三：<input type="text"><br />
+                星期四：<input type="text"><br />
+                星期五：<input type="text"><br />
+                星期六：<input type="text"><br />
+                星期日：<input type="text"><br /><br />
+            </div>          
+            <button id='oBtn'>确认输入</button>&nbsp&nbsp&nbsp&nbsp
+            <button id='oBtn1'>删除用户</button>
+            <table id='Tableltal' class='table table-bordered'>
+                <thead>
+                     <tr>
+                        <th><input type='checkbox'></th>
+                        <th>姓名</th>
+                        <th>星期一</th>
+                        <th>星期二</th>
+                        <th>星期三</th>
+                        <th>星期四</th>
+                        <th>星期五</th>
+                        <th>星期六</th>
+                        <th>星期日</th>
+                    </tr>
+                </thead>
+                <tbody id='oTbody'>
+
+                </tbody>
+            </table>
+        </div>     
+        <script>
+            window.onload=function(){ 
+               var  oTbody = document.getElementById('oTbody'),
+                    oBtn1 = document.getElementById('oBtn1'),
+                    oBtn = document.getElementById('oBtn');           
+                 // 创建用户    
+                 oBtn.onclick=function(){
+                     var  oInput = document.getElementById('oInput'),
+                          navTop = document.getElementById('navTop').getElementsByTagName('input');
+                     if(oInput.value == ''){
+                         alert('请输入用户姓名');
+                         return
+                     }else{
+                         var oDio = document.createElement('input'),
+                             oTr = document.createElement('tr');
+                         oDio.type = 'checkbox';
+                         // 创建td节点
+                         for(var i=0;i<9;i++){
+                             oTd = document.createElement('td')
+                             if(i==0){
+                                oTd.appendChild(oDio)
+                             }else{
+                                oTd.innerHTML = navTop[i-1].value;
+                             }
+                             oTr.appendChild(oTd)
+                         }
+                         oTbody.appendChild(oTr)
+                         
+                     }
+                 }
+                 // 删除用户  
+                 oBtn1.onclick=function(){
+                    var  oTbody = document.getElementById('oTbody'),
+                         oChecked = oTbody.getElementsByTagName('input'),
+                         deleteList = [],
+                         index = 0;
+                    for(var j=0;j<oChecked.length;j++){
+                        if(oChecked[j].checked == true){
+                            index += 1;
+                            deleteList.push(j)
+                        }
+                    }
+                    if(index == 0){
+                         alert('请选择需要删除的用户')
+                    }else{
+                        for(var i=0;i<deleteList.length;i++){
+                            oTbody.removeChild(oTbody.childNodes[deleteList[i]])
+                        }
+                    }
+                 }
+            }
+        </script>
+    </body>
+</html>

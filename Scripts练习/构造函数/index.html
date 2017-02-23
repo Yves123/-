@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            //普通函数
+            function demo(message){
+                console.log(message);
+            }
+            demo('Hi!')
+
+            //创建常用的构造函数
+            var nimo = new Object();
+            nimo.name = 'nimo';
+            console.log(nimo) //Object {name: "nimo"}
+            
+            //构造函数的返回值
+            var Create = function(){
+                this.name = 'nimo';
+            }
+            var nimo = new Create();
+            console.log(nimo.name); //"nimo"
+
+            //返回简单的数据类型
+            var Create = function(name){
+                this.name =name;
+                return 'string'
+            }
+            var nimo = new Create('nimo');
+            console.log(nimo.name); //nimo
+
+            //返回复杂数据类型
+            var Create = function(name){
+                this.name = name;
+                return {age:21,like:"read"}
+            }
+            var nimo = new Create('nimo');
+            console.log(nimo); //{age :21,like: "read"}
+
+            //构造函数的实例 过生日的孩子
+            var Kid = function(name,age){
+                this.name = name;
+                this.age = age;
+                this.fnHappyBirthday = function(){
+                    console.log('我是' + this.name + ',今天我过生日')
+                    console.log('今天我' + this.age + '岁');
+                    this.age++;
+                    console.log('过了12点我就' + this.age + '岁了');
+                }
+            }
+            var nimo = new Kid('nimo',21);
+            nimo.fnHappyBirthday();
+            /*
+            *  我是nimo，今天我过生日
+            *  今天我21岁
+            *  过了12点我就22岁了
+            */
+            console.log('----------------------')
+            nimo.fnHappyBirthday();
+            /*
+            *  我是nimo，今天我过生日
+            *  今天我22岁
+            *  过了12点我就23岁了
+            */
+        </script>
+    </body>
+</html>

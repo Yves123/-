@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/vue.min.js"></script>
+    </head>
+    <body>
+         <div id='app'>
+             <input type="text" v-model='msg'>
+             <button v-on:click='notify'>Broadcast Event</button>
+             <chlid-component></chlid-component>
+         </div>
+
+         <template id='child-component'>
+             <ul>
+                 <li v-for='item in messages'>父组件录入信息：{{item}}</li>
+             </ul>
+         </template>
+
+         <script>
+             Vue.component('chlid-component',{
+                 template:'#child-component',
+                 data:function(){
+                     return {
+                         messages:[]
+                     }
+                 },
+                 events:{
+                     'parent-msg':function(msg){
+                         this.messages.push(msg)
+                     }
+                 }
+             })
+
+             new Vue({
+                 el: '#app',
+                 data:{
+                     msg:''
+                 },
+                 methods: {
+                     notify: function(){
+                         if(this.msg.trim()){
+                             this.$broadcast('parent-msg',this.msg)
+                         }
+                     }
+                 }
+             })
+         </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/vue.min.js"></script>
+    </head>
+    <body>
+        <div id='App'>
+            <parent-component></parent-component>
+        </div>
+         
+         <script>
+
+             var Child = Vue.extend({
+                 template:'<p>This is a child component!</p>'
+             })
+             
+             var Parent = Vue.extend({
+                 template:'<p>This is a Parent component</p><child-component></child-component>',
+                 components:{
+                     'child-component':Child
+                 }
+             })
+            
+             Vue.component('parent-component',Parent)
+
+             new Vue({
+                 el:'#App',
+             })
+ 
+         </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-router.js"></script>
+    </head>
+    <body>
+        <script>
+            var Home = Vue.extend({
+                template: '
+                <a class="btn btn-primary" v-link="{name: 'addIssue', query: {userID: 'admin'}}" role="button">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新建问卷
+                    </a>',
+                data: function() {
+                    return {
+                        msg: 'Hello, vue router!'
+                    }
+                }
+            })
+
+            var router = new VueRouter()
+            router.map({
+                '/': { 
+                    name: 'index',
+                    component: Home 
+                },
+                '/about': { 
+                    name: 'about',
+                    component: function(resolve){
+                        require(['About'], resolve)
+                    }
+                }
+            })
+
+            var App = Vue.extend({})
+            router.start(App,'#app')
+        </script>
+
+        <div id="app">
+            <router-view></router-view>
+        </div>
+    </body>
+</html>

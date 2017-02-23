@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/vue.min.js"></script>
+    </head>
+    <body>
+         <div id="app">
+            <div id='app'>
+                <h2>这是一个统计表格的查询</h2>
+                <table>
+                <tr >
+                    <td v-for='AA in tabledata'>{{AA.name}}</td>
+                </tr>
+                </table>
+            </div>
+        </div>
+        <div style="position: absolute">
+            <input type="text" style='width: 200px;height: 40px;line-height: 40px;font-size: 25px;'>
+        </div>
+        
+        <script>
+            new Vue({
+                el: '#app',
+                data:{
+                    tablekey:'',
+                    tablecumle: ['name','fruit','pay'],
+                    tabledata:[
+                        {name:'01',fruit:'apple',pay:'35'},
+                        {name:'02',fruit:'banana',pay:'16'},
+                        {name:'03',fruit:'peach',pay:'20'},
+                        {name:'04',fruit:'Pear',pay:'10'},
+                        {name:'05',fruit:'Lemon',pay:'32'},
+                        {name:'06',fruit:'guava',pay:'26'},
+                        {name:'07',fruit:'papaya',pay:'25'},
+                    ]
+                },
+            })
+        </script>
+    </body>
+</html>

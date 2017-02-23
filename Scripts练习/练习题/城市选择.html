@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <h2>选择所在的省份及城市</h2>
+
+            省份：
+            <select id="first">
+                <option>--请选择--</option>
+                <option value='北京'>北京</option>
+                <option value='山东省'>山东省</option>
+                <option value='甘肃省'>甘肃省</option>
+            </select>
+            城市：
+            <select>
+                <option></option>
+            </select>
+            <br/>
+            <p>省份：<span></span></p>
+            <p>城市：<span></span></p>
+        </div>
+        <script>
+            window.onload=function(){
+                var AA = document.getElementById('first')
+                var index = AA.selectedIndex;
+                alert(index)
+            }
+        </script>
+    </body>
+</html>

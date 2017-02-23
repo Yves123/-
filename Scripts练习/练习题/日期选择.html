@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            *{margin: 0;padding: 0}
+            ul{list-style: none}
+            #tableheader{width: 336px;height: 500px;border: 1px solid #ddd;margin: 50px auto;padding: 10px 35px}
+            li{float: left}
+            span{display: block;
+                 width: 100px;
+                 height: 100px;
+                 margin: 5px;
+                 line-height: 100px;
+                 text-align:center;
+                 border: 1px solid #ddd;
+                 cursor: pointer;
+                 font-size: 40px;
+                 font-weight: bold
+                 }
+            .clear{clear:both}     
+            #tablebody{height: 50px;border: 1px solid #ddd;margin: 5px}
+        </style>
+    </head>
+    <body>
+        <div id="tableheader">
+            <ul>
+                <li><span value="1">1</span></li>
+                <li><span value="2">2</span></li>
+                <li><span value="3">3</span></li>
+                <li><span value="4">4</span></li>
+                <li><span value="5">5</span></li>
+                <li><span value="6">6</span></li>
+                <li><span value="7">7</span></li>
+                <li><span value="8">8</span></li>
+                <li><span value="9">9</span></li>
+                <li><span value="10">10</span></li>
+                <li><span value="11">11</span></li>
+                <li><span value="12">12</span></li>
+            </ul>
+            <div class="clear"></div>
+            <div id="tablebody"></div>
+        </div>
+        <script>
+            window.onload=function(){
+                var AA = document.getElementsByTagName('span');
+                for(var i=0;i<AA.length;i++){
+                    AA[i].onclick=function(){
+                        this.style.background='red';
+                        this.style.color='#fff';
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
